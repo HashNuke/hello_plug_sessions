@@ -6,9 +6,12 @@ defmodule HelloWorld do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    :ets.new(:hello_sessions, [:named_table, :public, read_concurrency: true])
+
     children = [
       # Define workers and child supervisors to be supervised
       # worker(HelloWorld.Worker, [arg1, arg2, arg3])
+      worker(HelloWorld.Server, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
