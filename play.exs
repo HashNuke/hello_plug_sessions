@@ -7,20 +7,8 @@ defmodule MyPlug do
 
   plug Plug.Logger
   plug Plug.Session, store: :ets, key: "_hello_session", secure: true, table: :sessions
-  # plug :put_secret_key_base
-  # plug Plug.Session, store: :cookie,
-  #                    key: "_hello_session",
-  #                    encryption_salt: "cookie store encryption salt",
-  #                    signing_salt: "cookie store signing salt",
-  #                    key_length: 64,
-  #                    serializer: Poison
   plug :match
   plug :dispatch
-
-
-  # def put_secret_key_base(conn, _) do
-  #   put_in conn.secret_key_base, "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
-  # end
 
 
   get "/set" do
